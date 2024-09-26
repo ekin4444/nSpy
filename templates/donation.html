@@ -1,0 +1,370 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>NeuroSpy</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'img/favicon.png' %}" rel="icon">
+    <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: NeuroSpy
+    * Template URL: https://bootstrapmade.com/NeuroSpy-free-medical-bootstrap-theme/
+    * Updated: Mar 17 2024 with Bootstrap v5.3.3
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+    <style>
+        /* Donation Section Styles */
+.donation {
+  background-color: #f9f9f9; /* Light background for contrast */
+  padding: 50px 0; /* Space above and below */
+  text-align: center; /* Center the text */
+}
+
+form {
+  background: #ffffff; /* White background for the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 30px; /* Inner padding */
+  display: inline-block; /* Center form */
+  width: 100%; /* Full width in small screens */
+  max-width: 500px; /* Limit form width */
+}
+
+form label {
+  font-weight: bold; /* Make labels bold */
+  display: block; /* Block display for spacing */
+  margin-bottom: 10px; /* Space below labels */
+  color: #555; /* Slightly lighter text */
+}
+
+#card-element {
+  padding: 15px; /* Increase inner padding */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 6px; /* Slightly rounded corners */
+  margin-bottom: 20px; /* Space below card element */
+  font-size: 1.2rem; /* Larger text size for better readability */
+  height: 50px; /* Set a specific height */
+}
+
+form input[type="text"],
+form input[type="email"],
+form select {
+  width: 100%; /* Full width inputs */
+  padding: 15px; /* Increase padding */
+  margin-bottom: 20px; /* Space below inputs */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 4px; /* Slightly rounded corners */
+  font-size: 1.2rem; /* Larger text size for better readability */
+}
+
+form input[type="number"] {
+  display: inline-block;
+  width: 100%; /* Or adjust this value based on the form layout */
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1.2rem;
+}
+
+
+
+button {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: #ffffff; /* White text */
+  border: none; /* No border */
+  padding: 12px 20px; /* Padding for button */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker on hover */
+}
+
+#card-errors {
+  color: #fa755a; /* Error color */
+  margin-top: 20px; /* Space above error messages */
+}
+
+  </style>
+</head>
+
+
+<body>
+
+<!-- ======= Top Bar ======= -->
+<div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-between">
+        <div class="contact-info d-flex align-items-center">
+            <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">ekinfiliza@hotmail.com</a>
+            <i class="bi bi-phone"></i> +905079480704
+        </div>
+        <div class="d-none d-lg-flex social-links align-items-center">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+    </div>
+</div>
+
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+        <h1 class="logo me-auto"><a href="index.html">NeuroSpy</a></h1>
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+
+                <!-- Authenticated Links -->
+                {% if user.is_authenticated %}
+                <li><a class="nav-link" href="detection.html">Detection</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Services
+                    </a>
+                    <!-- Accordion Dropdown Menu -->
+                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        <li><a class="dropdown-item" href="test.html">Test</a></li>
+                        <li><a class="dropdown-item" href="doctors.html">Doctors</a></li>
+                        <li><a class="dropdown-item" href="robot.html">Your Assistant</a></li>
+                        <li><a class="dropdown-item" href="courses.html">Courses</a></li>
+                        <li><a class="dropdown-item" href="charts.html">Charts</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link" href="edit_profile.html">Edit Profile</a></li>
+                <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a class="nav-link" href="login.html">Login</a></li>
+                {% endif %}
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+</header><!-- End Header -->
+
+<br><br><br><br>
+
+
+{% block content %}
+  <section id="donation" class="donation">
+    <div class="container">
+        <div class="section-title">
+            <h2>Make a Donation</h2>
+            <p>Your donation helps NeuroSpy support brain cancer research, provide valuable resources, and offer assistance to those battling cancer together, we can make a difference.            </p>
+        </div>
+        <form id="payment-form" method="POST">
+            {% csrf_token %}
+            
+            <!-- User Name and Email Inputs -->
+            <input type="text" name="donor_name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            
+            <!-- Donation Amount Section -->
+            <label for="amount">Select Donation Amount</label>
+            
+            <div>
+                <!-- Predefined Amounts -->
+                <label>
+                    <input type="radio" name="amount" value="10" required> $10
+                </label>
+                <label>
+                    <input type="radio" name="amount" value="25"> $25
+                </label>
+                <label>
+                    <input type="radio" name="amount" value="50"> $50
+                </label>
+                <label>
+                    <input type="radio" name="amount" value="100"> $100
+                </label>
+                
+                <!-- Custom Amount -->
+                <label>
+                    <input type="radio" name="amount" value="custom"> Custom Amount
+                </label>
+                <input type="number" name="custom_amount" placeholder="Enter Amount" min="1" step="0.01">
+            </div>
+        
+            <!-- Card Information -->
+            <div id="card-element" placeholder="Card Number"></div>
+            
+            <!-- Submit Button -->
+            <button type="submit">Donate</button>
+        </form>
+        
+        <div id="card-errors" role="alert"></div>
+        
+    </div>
+</section>
+{% endblock %}<br><br>
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h3>NeuroSpy</h3>
+                    <p>
+                      Istanbul <br>
+                        Turkey<br>
+                        <strong>Phone:</strong> +90 507 948 07 04<br>
+                        <strong>Email:</strong> ekinfiliza@hotmail.com<br>
+                    </p>
+                </div>
+
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#services">Detection</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#services">Test</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#services">Doctors</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#services">Courses</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#services">Your Assistant </a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#services">Charts</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-newsletter">
+                    <h4>Our Newsletter</h4>
+                    <p>Join our newsletter to stay updated on the latest brain cancer research, resources, and news from NeuroSpy.</p>
+                    <form action="" method="post">
+                        <label>
+                            <input type="email" name="email">
+                        </label><input type="submit" value="Subscribe">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>NeuroSpy</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/NeuroSpy-free-medical-bootstrap-theme/ -->
+                Designed by ekin
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'js/main.js' %}"></script>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    const stripe = Stripe('YOUR_PUBLIC_KEY');  // Replace with your public key
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+
+    const form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        stripe.confirmCardPayment('{PAYMENT_INTENT_CLIENT_SECRET}', {
+            payment_method: {
+                card: cardElement,
+                billing_details: {
+                    name: document.querySelector('input[name="donor_name"]').value,
+                },
+            }
+        }).then(function(result) {
+            if (result.error) {
+                // Show error to your customer
+                document.getElementById('card-errors').textContent = result.error.message;
+            } else {
+                // The payment has been processed!
+                if (result.paymentIntent.status === 'succeeded') {
+                    form.submit();  // Submit the form to finalize the donation
+                }
+            }
+        });
+    });
+</script>
+<script>
+    const amountSelect = document.getElementById('amount-select');
+    const customAmountInput = document.getElementById('custom-amount');
+
+    amountSelect.addEventListener('change', function() {
+        if (this.value === 'custom') {
+            customAmountInput.style.display = 'block';
+            customAmountInput.setAttribute('required', 'required');
+        } else {
+            customAmountInput.style.display = 'none';
+            customAmountInput.removeAttribute('required');
+        }
+    });
+</script>
+
+</body>
+
+</html>
