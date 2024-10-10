@@ -19,7 +19,7 @@ with open(activate_this) as file_:
 # Quick-start development settings - unsuitable for production
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
-ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'ekin4.pythonanywhere.com']
 CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS')
 
 # Application definition
