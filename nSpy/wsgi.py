@@ -1,5 +1,10 @@
 import os
+import sys
 import environ
+
+project_home = '/home/ekin4/nSpy'  # Change this to your project path
+if project_home not in sys.path:
+    sys.path.append(project_home)
 
 from django.core.wsgi import get_wsgi_application
 
