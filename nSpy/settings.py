@@ -58,9 +58,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'nSpy.wsgi.application'
 
 # Database
-# Example database configuration
 DATABASES = {
-    'default': env.db(),  # Uses DATABASE_URL from the .env
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 # Password validation
