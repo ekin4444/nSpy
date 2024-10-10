@@ -21,7 +21,7 @@ def index(request):
             return redirect('thank_you')  # Redirect after successful donation
     return render(request, 'index.html', {'donation_form': form})  # Pass the form to the template
 
-def donation_view(request):
+def donation_view(request, stripe=None):
     if request.method == 'POST':
         form = DonationForm(request.POST)
         if form.is_valid():

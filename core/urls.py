@@ -10,8 +10,6 @@ from .views import donation_view
 from django.views.generic import TemplateView
 from .views import donation_view
 
-
-
 urlpatterns = [
     path('', index, name='index'),
     path('index.html', contact_form, name='contact_form'),
@@ -19,13 +17,14 @@ urlpatterns = [
     path('logout/', views.logout_user, name='logout'),
     path('register.html', views.register, name='register'),
     path('edit_profile.html', views.edit_profile, name='edit_profile'),
-    path('change_password', views.change_password, name='change_password'),
+    path('change_password/', views.change_password, name='change_password'),
     path('charts.html', views.charts, name='charts'),
     path('robot.html', views.robot, name='robot'),
     path('doctors.html', views.doctors, name='doctors'),
     path('courses.html', views.courses, name='courses'),
     path('donation.html', views.donation, name='donation'),
-    path('thank-you/', TemplateView.as_view(template_name='thank_you.html'), name='thank_you'),    path('test.html', views.test, name='test'),
+    path('thank-you/', TemplateView.as_view(template_name='thank_you.html'), name='thank_you'),
+    path('test.html', views.test, name='test'),
     path('test_result.html', views.test_result, name='test_result'),
     path('detection.html', views.detection, name='detection'),
     path('detection_result.html', views.detection_result, name='detection_result'),
