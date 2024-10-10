@@ -4,17 +4,14 @@ import tempfile
 import environ
 from pathlib import Path
 
-from virtualenv.activation.python import activate_this
 
 env = environ.Env()
 environ.Env.read_env()
 
 tempfile.tempdir = '/tmp'
-BASE_DIR = Path(
-    __file__).resolve().parent.parentactivate_this = '/home/ekin4/.venv/Scripts/activate_this.py'
-with open(activate_this) as file_:
-    exec(file_.read(), dict(__file__=activate_this))
-
+BASE_DIR = Path(__file__).resolve().parent.parent
+temp_dir = os.getenv('TEMP')
+print(temp_dir)
 
 # Quick-start development settings - unsuitable for production
 DEBUG = env('DEBUG')
@@ -72,6 +69,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
