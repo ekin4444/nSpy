@@ -1,0 +1,22 @@
+# Enable Passenger for running Django
+PassengerEnabled on
+PassengerAppRoot /home/u1959950/etc/neurospy.com.tr/nSpy
+PassengerAppType wsgi
+PassengerStartupFile nSpy/wsgi.py
+
+# Serve static files directly
+Alias /static /home/u1959950/etc/neurospy.com.tr/nSpy/staticfiles
+
+<Directory /home/u1959950/etc/neurospy.com.tr/nSpy/staticfiles>
+    Require all granted
+</Directory>
+
+# Ensure requests are passed to Django if they don't match static files
+RewriteEngine On
+
+# Redirect requests to static files first
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Pass everything else to Django
+RewriteRule ^(.*)$ /dispatch.fcgi/$1 [QSA,L]
