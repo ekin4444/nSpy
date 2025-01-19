@@ -34,43 +34,30 @@ Follow these steps to set up the project locally:
 git clone https://github.com/ekin4444/nSpy.git
 cd nSpy
 2. Create a Virtual Environment
-bash
-Copy
-Edit
+ 
 python -m venv .venv
 3. Activate the Virtual Environment
 Windows:
-bash
-Copy
-Edit
+ 
 .\.venv\Scripts\activate
 Mac/Linux:
-bash
-Copy
-Edit
+ 
 source .venv/bin/activate
 4. Install Dependencies
-bash
-Copy
-Edit
+ 
 pip install -r requirements.txt
 5. Apply Migrations
-bash
-Copy
-Edit
+ 
 python manage.py migrate
 6. Run the Development Server
-bash
-Copy
-Edit
+ 
 python manage.py runserver
 7. Open in Browser
 Visit http://127.0.0.1:8000/ in your web browser.
 
 Project Structure
 plaintext
-Copy
-Edit
+ 
 nSpy/
 ├── myapp/              # Django app with views, models, and templates
 │   ├── migrations/     # Database migration files
@@ -93,19 +80,13 @@ We welcome contributions to improve NeuroSpy. Here's how you can contribute:
 
 Fork the repository.
 Create a feature branch:
-bash
-Copy
-Edit
+ 
 git checkout -b feature-name
 Commit your changes:
-bash
-Copy
-Edit
+ 
 git commit -m "Description of changes"
 Push to your branch:
-bash
-Copy
-Edit
+ 
 git push origin feature-name
 Open a pull request on GitHub.
 License
