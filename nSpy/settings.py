@@ -45,7 +45,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this
 ]
 
 ROOT_URLCONF = 'nSpy.urls'
@@ -70,13 +70,9 @@ WSGI_APPLICATION = 'nSpy.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+
 }
-
-
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -105,6 +101,7 @@ STATIC_URL = '/static/'
 
 # Change STATIC_ROOT to ensure it doesn't conflict with STATICFILES_DIRS
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Collect static files here
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Update the STATICFILES_DIRS
 STATICFILES_DIRS = [
