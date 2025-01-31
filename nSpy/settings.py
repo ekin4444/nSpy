@@ -3,7 +3,7 @@ import tempfile
 
 import environ
 from pathlib import Path
-
+import dj_database_url
 
 env = environ.Env()
 environ.Env.read_env()
@@ -29,6 +29,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'machine_learning',
+    'oauth2_provider',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
+    'oauth2_provider.backends.OAuth2Backend',  # Add OAuth2 backend
 ]
 
 MIDDLEWARE = [
@@ -69,6 +75,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation

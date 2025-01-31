@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
     path('', include('contact.urls')),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+
 ]
 
 if settings.DEBUG:
