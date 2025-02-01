@@ -1,9 +1,9 @@
 import os
 import tempfile
+import dj_database_url
 
 import environ
 from pathlib import Path
-import dj_database_url
 
 env = environ.Env()
 environ.Env.read_env()
@@ -17,7 +17,14 @@ print(temp_dir)
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'ekin4.pythonanywhere.com']
-CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS')
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[
+    'http://127.0.0.1',
+    'http://localhost',
+    'http://ekinfilizatas.com',
+    'http://neurospy.com.tr',
+    'https://www.neurospy.com.tr',
+    'https://nspy.onrender.com'
+])
 
 # Application definition
 INSTALLED_APPS = [
@@ -70,9 +77,15 @@ WSGI_APPLICATION = 'nSpy.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
-
+    'default': dj_database_url.config(default=env('DATABASE_URL'))
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / "db.sqlite3",  # Ensure this path is correct
+#     }
+# }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -118,11 +131,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "ekinfilizatass@gmail.com"
-EMAIL_HOST_PASSWORD = "zznm fcmc glwk qxps"  # Make sure to handle sensitive data properly
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
-
-# Stripe keys
-STRIPE_PUBLIC_KEY = 'your-public-key'
-STRIPE_SECRET_KEY = 'your-secret-key'
-print(ALLOWED_HOSTS)
