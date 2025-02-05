@@ -17,5 +17,9 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.12 (nSpy)" />
   </component>
+  <component name="ProjectResources">
+    <resource url="XmlFile:XMLSchema.dtd" location="$PROJECT_DIR$" />
+    <resource url="http://terminology.hl7.org/ImplementationGuide/hl7.terminology" location="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (nSpy)" project-jdk-type="Python SDK" />
 </project>
