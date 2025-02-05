@@ -1,6 +1,6 @@
 import os
 import tempfile
-import dj_database_url
+# import dj_database_url
 
 import environ
 from pathlib import Path
@@ -77,7 +77,10 @@ WSGI_APPLICATION = 'nSpy.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': dj_database_url.config(default=env('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 # DATABASES = {
